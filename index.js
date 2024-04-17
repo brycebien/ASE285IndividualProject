@@ -10,10 +10,9 @@ async function main() {
     console.log('Connected to MongoDB!');
 }
 
-const user = new users({
-    email: 'testing',
-    password: 'password'
-});
+const user = new users();
+user.email = 'test email';
+user.setPassword('test password');
 
 (async () => {
     await user.save();
