@@ -1,0 +1,10 @@
+{
+  "name": "passwordjs",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "jest": "^27.5.1",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.2"
+  }
+}
