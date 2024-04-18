@@ -1,6 +1,8 @@
 const mongoose = require('mongoose'); 
 const users = require('./models/Users');
 const dotenv = require('dotenv');
+const {makepassword} = require('./src/makepassword');
+const util = require('./src/utility');
 dotenv.config();
 
 main().catch(err => console.log(err));
@@ -10,12 +12,17 @@ async function main() {
     console.log('Connected to MongoDB!');
 }
 
-const user = new users();
-user.email = 'test email';
-user.setPassword('test password');
+makepassword('./password.txt', './password.enc.txt');
 
-(async () => {
-    await user.save();
-    console.log('User has been saved!');
-    await mongoose.connection.close();
-})();
+let usersData = util.readFile('./password.enc.txt');
+
+console.log(usersData);
+
+usersData.forEach((user) => {
+    let [email, password] = user.split(':');
+    let newUser = new users({
+        email: email,
+        password: password
+    });
+    newUser.save();
+});

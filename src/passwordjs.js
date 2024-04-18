@@ -9,11 +9,19 @@ function passwordjs() {
     var email = process.argv[3]
     var password = process.argv[4]
 
-    ???
+    if (!fs.existsSync(filename)) {
+        return false;
+    } else {
+        if (util.readFile(filename).includes(email + ':' + util.hash(password))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 if (require.main === module) {
     console.log(passwordjs()) // print out true or false
 }
 
-module.exports = {???};
+module.exports = { passwordjs };
