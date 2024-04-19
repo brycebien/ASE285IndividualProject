@@ -3,7 +3,7 @@ const fs = require('fs');
 const util = require('./utility')
 
 function passwordjs() {
-    if (process.argv.length != 5) return 'false';
+    if (process.argv.length != 5) return false;
 
     var filename = process.argv[2]
     var email = process.argv[3]

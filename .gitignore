@@ -4,3 +4,4 @@ package-lock.json
 passwords.enc.txt
 password.enc.txt
 tests/passwordtest.enc.txt
+passwordtest.enc.txt
