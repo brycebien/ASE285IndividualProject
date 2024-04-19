@@ -13,15 +13,13 @@ const fs = require('fs');
 
 /*
 // Let's say you have a toHash() function in this module
-*/
 
-// test('Check toHash(): if the email:password is converted into email:hashPassword', () => {
-//     const input = './tests/passwordtest.txt'
-//     const output = './tests/passwordtest.enc.txt'
-//     p.makepassword(input, output)
-//     data = u.readFile(output)
-//     expect(data.split(':')[1]).toBe(output.split(':')[1]);
-// });
+test('Check toHash(): if the email:password is converted into email:hashPassword', () => {
+    const input = ???
+    const output = ???
+    expect(p.toHash(input)).toBe(output);
+});
+*/
 
 describe("makepassword should create file", () => {
     test('',() => {
@@ -41,6 +39,7 @@ describe("makepassword should create file", () => {
         // 3. Make sure the contents of password.enc.txt has correct contents.
         const data = u.readFile(encFileName)
         expect(data.length).toBe(1)
-        expect(data[0]).toContain('sm.cho@hello.com')
+        expect(data[0]).toContain('sm.cho@hello.com:')
+        expect(data[0]).not.toContain('123456')
     })
 })
