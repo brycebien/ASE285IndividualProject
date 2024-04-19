@@ -21,7 +21,7 @@ function passwordjs() {
 }
 
 if (require.main === module) {
-    console.log(passwordjs()) // print out true or false
+    console.log(passwordjs())
 }
 
 module.exports = { passwordjs };

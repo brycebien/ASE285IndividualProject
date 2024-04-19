@@ -3,3 +3,4 @@ node_modules
 package-lock.json
 passwords.enc.txt
 password.enc.txt
+tests/passwordtest.enc.txt
