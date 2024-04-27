@@ -9,14 +9,11 @@ main().catch(err => console.log(err));
 
 async function main() {
     await mongoose.connect(process.env.URI);
-    console.log('Connected to MongoDB!');
 }
 
 makepassword('./password.txt', './password.enc.txt');
 
 let usersData = util.readFile('./password.enc.txt');
-
-console.log(usersData);
 
 usersData.forEach((user) => {
     let [email, password] = user.split(':');
@@ -26,3 +23,5 @@ usersData.forEach((user) => {
     });
     newUser.save();
 });
+console.log(`Users added to database:`);
+console.log(usersData);
