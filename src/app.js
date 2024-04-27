@@ -12,24 +12,31 @@ async function main() {
 }
 
 async function passwordjs() {
-    if (process.argv.length != 4) return false;
+    if (process.argv.length != 4){
+        mongoose.connection.close();
+        return false;
+    }
 
-    var email = process.argv[2]
-    var password = process.argv[3]
+    var email = process.argv[2];
+    var password = process.argv[3];
 
     var user = await users.findOne({email: email})
     if(user == null) {
-        console.log('false')
+        mongoose.connection.close();
+        return false;
     } else if (user.password == util.hash(password) && user.email == email) {
-        console.log('true')
+        mongoose.connection.close();
+        return true;
     } else {
-        console.log('false')
+        mongoose.connection.close();
+        return false;
     }
-    mongoose.connection.close()
 }
 
 if (require.main === module) {
-    passwordjs()
+    (async () => {
+        console.log(await passwordjs())
+    })();
 }
 
 module.exports = { passwordjs };
